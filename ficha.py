@@ -27,66 +27,49 @@ def ficha():
     #   - Código secreto: nombre invertido en mayúsculas
     #   - Las 3 notas, su suma, promedio y promedio entero
     #   - Cierre decorativo usando repetición de string ("=" * 24)
+    nombre = input("Ingrese su nombre: ").title().strip()
+    email = input("Ingrese su email: ").lower()
+    nota1 = int(input("Ingrese su primer nota: "))
+    nota2 = int(input("Ingrese su segunda nota: "))
+    nota3 = int(input("Ingrese su tercera nota: "))
 
-nombre=input()
-email=input()
-nota1=int(input())
-nota2=int(input())
-nota3=int(input())
-
-print("""========================
-FICHA DEL ALUMNO
+    print("""========================
+    FICHA DEL ALUMNO
 ========================""")
 
-nombre_limpio= nombre.strip().title()
+    print(f"Nombre: {nombre}")
+    print(f"Email: {email}")
 
-email=email.lower()
+    print(f"Caracteres en nombre: {len(nombre)}")
 
-caracteres=len(nombre_limpio)
+    espacio_nombre = nombre.find(" ")
+    iniciales_nombre = nombre[0] + nombre[espacio_nombre + 1]
+    print(f"Iniciales: {iniciales_nombre}")
 
-espacio= nombre_limpio.find(" ")
+    usuario = (nombre[espacio_nombre + 1:] + "." + nombre[:espacio_nombre]).lower()
+    print(f"Usuario: {usuario}")
 
-iniciales=nombre_limpio[0] + nombre_limpio[espacio+1]
+    print(f"Email valido: {'@' in email}")
 
-nombre=nombre_limpio[:espacio]
+    arroba_email = email.find("@")
+    dominio_email = email[arroba_email + 1:]
+    print(f"Dominio: {dominio_email}")
 
-apellido=nombre_limpio[espacio+1:]
+    print(f"Nombre para archivo: {nombre.replace(' ', "_")}")
 
-usuario=(apellido + "." + nombre).lower()
+    print(f"Cantidad de a: {nombre.count('a')}")
 
-email_valido= "@" in email
+    print(f"Codigo secreto: {(nombre[::-1]).upper()}")
 
-pos= email.find("@")
+    print(f"Nota 1: {nota1}")
+    print(f"Nota 2: {nota2}")
+    print(f"Nota 3: {nota3}")
 
-dominio= email[pos+1:]
+    suma = nota1 + nota2 + nota3
+    promedio = (nota1 + nota2 + nota3) / 3
 
-nombre_archivo= nombre_limpio.replace(" ","_")
+    print(f"Suma: {suma}")
+    print(f"Promedio: {float(promedio)}")
+    print(f"Promedio entero: {int(promedio)}")
 
-cantidad_a=nombre_limpio.lower().count("a")
-
-codigo=nombre_limpio[::-1].upper()
-
-suma=(nota1+nota2+nota3)
-
-promedio= suma/3
-
-promedio_entero= suma//3
-
-print(f"Nombre: {nombre_limpio}")
-print(f"Email: {email}")
-print(f"Caracteres en nombre: {caracteres}")
-print(f"Iniciales: {iniciales}")
-print(f"Usuario: {usuario}")
-print(f"Email valido: {email_valido}")
-print(f"Dominio: {dominio}")
-print(f"Nombre para archivo: {nombre_archivo}")
-print(f"Cantidad de a: {cantidad_a}")
-print(f"Codigo secreto: {codigo}")
-print(f"Nota 1: {nota1}")
-print(f"Nota 2: {nota2}")
-print(f"Nota 3: {nota3}")
-print(f"Suma: {suma}")
-print(f"Promedio: {promedio}")
-print(f"Promedio entero: {promedio_entero}")
-
-print("="*24)
+    print("=" * 24)
